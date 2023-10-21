@@ -26,21 +26,20 @@ public class CommandController {
     public String createOrderForm(Model model, @PathVariable("personId") Integer personId) {
         model.addAttribute("personId", personId);
         model.addAttribute("command", new Command());
+        List<Place> places = placeService.getAllPlaces();
+        model.addAttribute("places", places);
+        List<Person> persons = entityService.getAllPerson();
+        model.addAttribute("persons", persons);
         return "order-form";
     }
 
     @PostMapping("/add/{personId}")
     public String createOrder(@ModelAttribute("command") Command command, @PathVariable("personId") Integer personId) {
+        Person person = entityService.getPersonById(personId);
+        command.setPerson(person);
         entityService.saveCommand(command);
         return "redirect:/commands";
     }
 
-
-//    @GetMapping("/places")
-//    public String listPlaces(Model model) {
-//        List<Place> places = placeService.getAllPlaces();
-//        model.addAttribute("places", places);
-//        return "places";
-//    }
 
 }

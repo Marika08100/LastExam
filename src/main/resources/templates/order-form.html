@@ -6,13 +6,25 @@
 </head>
 <body>
 <h1>Create a New Order</h1>
-<form method="post" th:action="@{'/command/add/' + ${personId}}">
-    <input type="hidden" th:field="*{personId}" th:value="${personId}">
+<form method="post" th:action="@{/command/add/{personId}(personId=${personId})}">
     <label for="item">Item</label>
     <input type="text" id="item" name="item" required>
     <label for="price">Price</label>
     <input type="number" id="price" name="price" required>
+
+    <label for="personId">Person</label>
+    <select id="personId" name="personId">
+        <option th:each="person : ${persons}" th:value="${person.personId}" th:text="${person.name}"></option>
+    </select>
+
+    <label for="place">Place</label>
+    <select id="place" name="place">
+        <option th:each="place : ${places}" th:value="${place.id}" th:text="${place.name}"></option>
+    </select>
+
     <button type="submit">Place Order</button>
 </form>
+
+
 </body>
 </html>

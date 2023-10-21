@@ -1,0 +1,55 @@
+CREATE DATABASE orders;
+USE orders;
+
+CREATE TABLE person (
+person_id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100),
+birth_place VARCHAR(100),
+birth_date DATE,
+email VARCHAR(60)
+);
+
+CREATE TABLE command (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    item VARCHAR(100),
+    price DECIMAL,
+    person_id INT,
+    place_for_orders_id INT,
+    FOREIGN KEY(person_id) REFERENCES person(person_id),
+    FOREIGN KEY(place_for_orders_id) REFERENCES place_for_orders(id)
+);
+
+
+INSERT INTO person (name, birth_place, birth_date, email)
+VALUES
+    ('Ambrus Marika', 'Kistarcsa', '2002-10-08', 'ambrusmarika02@gmail.com'),
+    ('LAzits Mate', 'Veresegyhaz', '2001-06-16', 'mate.lazits@gmail.com'),
+    ('Rohacsi Dana', 'Godollo', '2000-08-20', 'dana82@gmail.com');
+
+INSERT INTO command (item, price, person_id,place_for_orders_id) VALUES
+    ('Burger', 60.9, 1,3),
+    ('Pizza', 40.5, 2,1),
+    ('Salad', 30.7, 3,2);
+
+CREATE TABLE place_for_orders (
+id INT PRIMARY KEY AUTO_INCREMENT,
+name VARCHAR(100)
+);
+
+INSERT INTO place_for_orders (name) VALUES
+('BurgerKing'),
+('KFC'),
+('McDonalds'),
+('SimonsBurger'),
+('Diablo'),
+('Zseb');
+
+
+
+SELECT * FROM person;
+SELECT * FROM command;
+SELECT * FROM place_for_orders;
+
+DROP TABLE command;
+DROP TABLE person;
+DROP TABLE place_for_orders;

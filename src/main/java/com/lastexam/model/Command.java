@@ -14,16 +14,18 @@ import java.math.BigDecimal;
 public class Command {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  Integer id;
+    private Integer id;
     private String item;
     private BigDecimal price;
     @ManyToOne
     @JoinColumn(name = "person_id", referencedColumnName = "personId")
     private Person person;
-
     @ManyToOne
     @JoinColumn(name = "place_for_orders_id")
     private Place place;
+
+    private String personName;
+    private String personInfo;
 
     @Override
     public String toString() {
@@ -31,8 +33,9 @@ public class Command {
                 "id=" + id +
                 ", item='" + item + '\'' +
                 ", price=" + price +
-                ", person=" + person +
-                ", place=" + place +
+                ", personInfo='" + personInfo + '\'' +
                 '}';
     }
+
+
 }
