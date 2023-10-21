@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Orders</title>
 </head>
 <body>
-$END$
+<h1>Orders</h1>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Item</th>
+        <th>Price</th>
+        <th>Person</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="command : ${commands}">
+        <td th:text="${command.id}"></td>
+        <td th:text="${command.item}"></td>
+        <td th:text="${command.price}"></td>
+        <td th:text="${command.person != null ? command.person.name : 'No Person'}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>

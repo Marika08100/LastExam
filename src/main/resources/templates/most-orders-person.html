@@ -2,9 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Person with Most Orders</title>
 </head>
 <body>
-
+<h1>Person with Most Orders</h1>
+<p th:if="${person != null}">
+    <strong>Name:</strong> <span th:text="${person.name}"></span><br>
+    <strong>Birth Place:</strong> <span th:text="${person.birthPlace}"></span><br>
+    <strong>Birth Date:</strong> <span th:text="${#temporals.format(person.birthDate, 'yyyy-MM-dd')}"></span><br>
+    <strong>Email:</strong> <span th:text="${person.email}"></span>
+</p>
+<p th:if="${person == null}">No data available.</p>
 </body>
 </html>

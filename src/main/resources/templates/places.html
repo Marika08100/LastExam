@@ -2,9 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Places</title>
 </head>
 <body>
-$END$
+<h1>List of Places</h1>
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="place : ${places}">
+    <td th:text="${place.id}"></td>
+    <td th:text="${place.name}"></td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>

@@ -2,9 +2,37 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Person Statistics</title>
 </head>
 <body>
-$END$
+<h1>Person Statistics</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Person ID</th>
+    <th>Name</th>
+    <th>Birth Place</th>
+    <th>Birth Date</th>
+    <th>Email</th>
+    <th>Orders</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr th:each="person : ${allPersons}">
+    <td th:text="${person.personId}"></td>
+    <td th:text="${person.name}"></td>
+    <td th:text="${person.birthPlace}"></td>
+    <td th:text="${#temporals.format(person.birthDate, 'yyyy-MM-dd')}"></td>
+    <td th:text="${person.email}"></td>
+    <td>
+      <ul>
+        <li th:each="order : ${person.commands}">
+          <span th:text="${order.place}"></span> - <span th:text="${order.item}"></span>
+        </li>
+      </ul>
+    </td>
+  </tr>
+  </tbody>
+</table>
 </body>
 </html>

@@ -2,9 +2,15 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>$Title$</title>
+  <title>Update Person</title>
 </head>
 <body>
-$END$
+<h1>Update Person</h1>
+<form method="post" th:action="@{'/person/update/' + ${person.personId}}">
+  <input type="hidden" th:field="*{personId}">
+  <label for="name">Name</label>
+  <input type="text" id="name" th:field="*{person.name}">
+  <button type="submit">Update</button>
+</form>
 </body>
 </html>

@@ -1,10 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-$END$
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Birth Place</th>
+        <th>Birth Date</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${persons}">
+        <td th:text="${person.getPersonId}"></td>
+        <td th:text="${person.name}"></td>
+        <td th:text="${person.birthPlace}"></td>
+        <td th:text="${#temporals.format(person.birthDate, 'yyyy-MM-dd')}"></td>
+        <td th:text="${person.email}"></td>
+    </tr>
+    </tbody>
+</table>
 </body>
 </html>
